@@ -1,4 +1,4 @@
-import numpy as np # maths package
+import numpy as np  # maths package
 
 
 # create a transformation matrix from a dh table
@@ -9,7 +9,7 @@ def dh_to_matrix(d, alpha, r, offset=0):
 
     # the function that will be used for our forward kinematics
     def test(theta):
-        theta = np.radians(theta)+offset
+        theta = np.radians(theta) + offset
         return np.array([
             [np.cos(theta), -np.sin(theta) * np.cos(alpha), np.sin(theta) * np.sin(alpha), r * np.cos(theta)],
             [np.sin(theta), np.cos(theta) * np.cos(alpha), -np.cos(theta) * np.sin(alpha), r * np.sin(theta)],
@@ -29,12 +29,20 @@ def full_arm(t1, t2, t3, t4, t5, t6):
     dh_5_6 = dh_to_matrix(105 + 130, 90, 0, 90)
     return dh_0_1(t1) @ dh_1_2(t2) @ dh_2_3(t3) @ dh_3_4(t4) @ dh_4_5(t5) @ dh_5_6(t6)
 
+
 def get_euler_angles(dh):
-    rotation = dh[:3,:3]
-    return 0
+    rotation = dh[:3, :3]
+    pitch = np.arctan2(-rotation[2, 0], np.sqrt(rotation[1, 0] ** 2 + rotation[0, 0] ** 2))
+    roll = np.arctan2(rotation[2, 1]/np.cos(pitch), rotation[2, 2]/np.cos(pitch))
+    yaw = np.arctan2(rotation[1, 0]/np.cos(pitch), rotation[0, 0]/np.cos(pitch))
+    return {
+        "x": np.degrees(roll),
+        "y": np.degrees(pitch),
+        "z": np.degrees(yaw)
+            }
 
 
 if __name__ == '__main__':
-    transform = full_arm(3.234, 9.099, 107.08, 211.91, 281.391,292.76)
+    transform = full_arm(3.234, 9.099, 107.08, 211.91, 281.391, 292.76)
     print(transform)
-    print(transform[:3,:3])
+    print(get_euler_angles(transform))
