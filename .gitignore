@@ -1,1 +1,6 @@
 .DS_store
+*.csv
+Self_Study/1.PatternReg.ML/Uni.Assignment/Fashion-MNIST/t10k-images-idx3-ubyte
+Self_Study/1.PatternReg.ML/Uni.Assignment/Fashion-MNIST/t10k-labels-idx1-ubyte
+Self_Study/1.PatternReg.ML/Uni.Assignment/Fashion-MNIST/train-images-idx3-ubyte
+Self_Study/1.PatternReg.ML/Uni.Assignment/Fashion-MNIST/train-labels-idx1-ubyte
