@@ -7,5 +7,6 @@
         "spatialmath",
         "trplot"
     ],
-    "editor.parameterHints.enabled": false
+    "editor.parameterHints.enabled": false,
+    "execution_count": "None"
 }
