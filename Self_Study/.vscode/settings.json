@@ -8,5 +8,11 @@
         "trplot"
     ],
     "editor.parameterHints.enabled": false,
+    "editor.hover.enabled": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.showStatusBar": false,
+    "editor.suggest.showDetails": false,
+    "editor.quickSuggestions": { "other": false, "comments": false, "strings": false },
+    "editor.suggestOnTriggerCharacters": false,
     "execution_count": "None"
 }
